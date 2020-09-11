@@ -13,9 +13,9 @@
 
 ### Backup and remove MbedTLS source code
 -------------
-Step 1: Move ./mbedtls/dev folder to ./  
+#### Step 1: Move ./mbedtls/dev folder to ./  
 `$ ./3_move_out.sh`  
-Step 2: Delete ./mbedtls folder  
+#### Step 2: Delete ./mbedtls folder  
 `$ ./4_clean.sh`
 
 ### Environment information

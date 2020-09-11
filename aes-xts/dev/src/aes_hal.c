@@ -24,6 +24,8 @@ int hal_aes128_xts(uint8_t *key1, uint8_t *key2, uint8_t *iv, uint8_t *src, uint
 
     mbedtls_aes_crypt_xts( &ctx, mode, src_len, iv, src, out );
 
+    mbedtls_aes_xts_free( &ctx );
+
     return 0;
 }
 
@@ -46,6 +48,8 @@ int hal_aes256_xts(uint8_t *key1, uint8_t *key2, uint8_t *iv, uint8_t *src, uint
     }
 
     mbedtls_aes_crypt_xts( &ctx, mode, src_len, iv, src, out );
+
+    mbedtls_aes_xts_free( &ctx );
 
     return 0;
 }
