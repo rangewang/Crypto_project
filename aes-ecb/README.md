@@ -25,4 +25,4 @@ gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0
 
 ### Reference
 -------------
-1. [DThe Advanced Encryption Standard Algorithm Validation Suite (AESAVS)](https://csrc.nist.gov/CSRC/media/Projects/Cryptographic-Algorithm-Validation-Program/documents/aes/AESAVS.pdf)
+1. [The Advanced Encryption Standard Algorithm Validation Suite (AESAVS)](https://csrc.nist.gov/CSRC/media/Projects/Cryptographic-Algorithm-Validation-Program/documents/aes/AESAVS.pdf)
