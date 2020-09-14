@@ -171,16 +171,121 @@ static void aes_ecb_256_test(void)
     fclose(goldenf);
 }
 
+static void aes_ecb_128_test_multi(void)
+{
+    FILE *keyf,  *dataf, *goldenf;
+    uint8_t key[AES128];
+    uint8_t data[AES_BLOCKLEN * 4], golden[AES_BLOCKLEN * 4], tmp[AES_BLOCKLEN * 4];
+    uint16_t len;
+
+    keyf = fopen("./pattern/multi_128_key.bin","rb");
+    dataf = fopen("./pattern/multi_128_ptx.bin","rb");
+    goldenf = fopen("./pattern/multi_128_ctx.bin","rb");
+
+    fread(key, sizeof(key), 1, keyf);
+    fread(data, sizeof(data), 1, dataf);
+    fread(golden, sizeof(golden), 1, goldenf);
+
+    printf("Test - F.1.1 ECB-AES128.Encrypt...");
+    hal_aes_ecb_multi(key, data, 0x40, tmp, 0, ENCRYPT, AES128);
+    if (!sec_compare(tmp, golden, 0x40))
+        printf("pass\n");
+    else
+        printf("fail\n");
+
+    printf("Test - F.1.2 ECB-AES128.Decrypt...");
+    hal_aes_ecb_multi(key, golden, 0x40, tmp, 0, DECRYPT, AES128);
+    if (!sec_compare(tmp, data, 0x40))
+        printf("pass\n");
+    else
+        printf("fail\n");
+
+    fclose(keyf);
+    fclose(dataf);
+    fclose(goldenf);
+}
+
+static void aes_ecb_192_test_multi(void)
+{
+    FILE *keyf,  *dataf, *goldenf;
+    uint8_t key[AES192];
+    uint8_t data[AES_BLOCKLEN * 4], golden[AES_BLOCKLEN * 4], tmp[AES_BLOCKLEN * 4];
+    uint16_t len;
+
+    keyf = fopen("./pattern/multi_192_key.bin","rb");
+    dataf = fopen("./pattern/multi_192_ptx.bin","rb");
+    goldenf = fopen("./pattern/multi_192_ctx.bin","rb");
+
+    fread(key, sizeof(key), 1, keyf);
+    fread(data, sizeof(data), 1, dataf);
+    fread(golden, sizeof(golden), 1, goldenf);
+
+    printf("Test - F.1.1 ECB-AES192.Encrypt...");
+    hal_aes_ecb_multi(key, data, 0x40, tmp, 0, ENCRYPT, AES192);
+    if (!sec_compare(tmp, golden, 0x40))
+        printf("pass\n");
+    else
+        printf("fail\n");
+
+    printf("Test - F.1.2 ECB-AES192.Decrypt...");
+    hal_aes_ecb_multi(key, golden, 0x40, tmp, 0, DECRYPT, AES192);
+    if (!sec_compare(tmp, data, 0x40))
+        printf("pass\n");
+    else
+        printf("fail\n");
+
+    fclose(keyf);
+    fclose(dataf);
+    fclose(goldenf);
+}
+
+static void aes_ecb_256_test_multi(void)
+{
+    FILE *keyf,  *dataf, *goldenf;
+    uint8_t key[AES256];
+    uint8_t data[AES_BLOCKLEN * 4], golden[AES_BLOCKLEN * 4], tmp[AES_BLOCKLEN * 4];
+    uint16_t len;
+
+    keyf = fopen("./pattern/multi_256_key.bin","rb");
+    dataf = fopen("./pattern/multi_256_ptx.bin","rb");
+    goldenf = fopen("./pattern/multi_256_ctx.bin","rb");
+
+    fread(key, sizeof(key), 1, keyf);
+    fread(data, sizeof(data), 1, dataf);
+    fread(golden, sizeof(golden), 1, goldenf);
+
+    printf("Test - F.1.1 ECB-AES256.Encrypt...");
+    hal_aes_ecb_multi(key, data, 0x40, tmp, 0, ENCRYPT, AES256);
+    if (!sec_compare(tmp, golden, 0x40))
+        printf("pass\n");
+    else
+        printf("fail\n");
+
+    printf("Test - F.1.2 ECB-AES256.Decrypt...");
+    hal_aes_ecb_multi(key, golden, 0x40, tmp, 0, DECRYPT, AES256);
+    if (!sec_compare(tmp, data, 0x40))
+        printf("pass\n");
+    else
+        printf("fail\n");
+
+    fclose(keyf);
+    fclose(dataf);
+    fclose(goldenf);
+}
+
+
 int main(void)
 {
-    printf("\nAES Algorithm Validation Suite for ECB-AES-128 \n");
+    printf("\n---------------------Single Block--------------------- \n");
     aes_ecb_128_test();
-
-    printf("\nAES Algorithm Validation Suite for ECB-AES-192 \n");
     aes_ecb_192_test();
-
-    printf("\nAES Algorithm Validation Suite for ECB-AES-256 \n");
     aes_ecb_256_test();
+
+    printf("\n---------------------Multiple Blocks--------------------- \n");
+    aes_ecb_128_test_multi();
+    aes_ecb_192_test_multi();
+    aes_ecb_256_test_multi();
+
 
     return 0;
 }

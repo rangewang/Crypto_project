@@ -26,3 +26,4 @@ gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0
 ### Reference
 -------------
 1. [The Advanced Encryption Standard Algorithm Validation Suite (AESAVS)](https://csrc.nist.gov/CSRC/media/Projects/Cryptographic-Algorithm-Validation-Program/documents/aes/AESAVS.pdf)
+2. [SP 800-38A Recommendation for Block Cipher Modes of Operation: Methods and Techniques](https://csrc.nist.gov/publications/detail/sp/800-38a/final)
