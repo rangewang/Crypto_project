@@ -9,6 +9,8 @@
 #### Pattern  
 `$ ./pattern/`  
 
+### Study
+-------------
 #### Verification  
 T.B.D.
 
